@@ -1,0 +1,13 @@
+@import 'assets/style/variables.scss';
+@import "~bootstrap/scss/bootstrap";
+@import 'assets/style/header.scss';
+@import 'assets/style/sign-in.scss';
+
+html {
+  height: 100%;
+}
+
+body {
+  font-size: 1em;
+  font-family: Verdana, Helvetica, sans-serif;
+}

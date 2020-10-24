@@ -1,0 +1,9 @@
+@import './themes/midnight-colors.scss';
+
+$border-radius:		.5em;
+$border-stroke:		.2em;
+
+.theme-midnight {
+	background-color: $mprimary;
+	color: 			  $onPrimary;
+}
