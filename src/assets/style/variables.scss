@@ -6,4 +6,25 @@ $border-stroke:		.2em;
 .theme-midnight {
 	background-color: $mprimary;
 	color: 			  $onPrimary;
+
+	
+	.zfgc-form{
+		.btn{
+			&.btn-primary{
+				background-color: $btnPrimary;
+			}
+
+			&.btn-secondary{
+				background-color: $btnSecondary;
+			}
+		}
+	}
+
+	a{
+		color: #77ff3f;
+
+		&:visited{
+			color: #cdff07;
+		}
+	}
 }

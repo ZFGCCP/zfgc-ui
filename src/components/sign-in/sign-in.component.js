@@ -30,7 +30,7 @@ function SignIn()  {
 
 	return (
 		<div className="sign-in-form justify-content-center d-flex">
-			<Form className="col-6" onSubmit={handleSubmit}>
+			<Form className="zfgc-form col-6" onSubmit={handleSubmit}>
 				<Form.Group>
 					<Form.Label>Username</Form.Label>
 					<Form.Control type="input" name="username"></Form.Control>
@@ -42,7 +42,12 @@ function SignIn()  {
 				</Form.Group>
 
 				<Form.Group>
-					<Button type="submit">Sign in</Button>
+					<Form.Check type="checkbox" label="Stay signed in"></Form.Check>
+				</Form.Group>
+
+				<Form.Group>
+					<Button variant="primary" type="submit">Sign in</Button>
+					<Button variant="secondary">Go Back</Button>
 				</Form.Group>
 			</Form>
 		</div>

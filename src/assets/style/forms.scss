@@ -1,0 +1,38 @@
+.zfgc-form{
+	label {
+		font-weight: 600;
+	}
+
+	input {
+		border: .1em solid black;
+	}
+
+	.form-check{
+		&::before{
+		    content: "";
+		    display: inline-flex;
+		    width: 1em;
+		    height: 1em;
+		    background-color: white;
+		    margin-right: .5em;
+		    position: relative;
+		    top: .15em;
+		    border-radius: .2em;
+		    border: 1px solid black;
+		}
+		
+		input{
+			display: none;
+		}
+	}
+
+	.btn {
+		margin-right: 1em;
+
+		&.btn-primary {
+    		box-shadow: 0.2em 0.2em 0.4em 0 black;
+    		border: .13em solid black;
+    		font-weight: 600;
+		}
+	}
+}
