@@ -1,8 +1,38 @@
 .zfgc-header{
-	border-bottom: .2em solid black;
-	padding: 1em;
+    border-bottom: .2em solid black;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0.1em 0.3em black;
 
 	.user-heading{
 		font-weight: bold;
+	}
+
+	.nav-heading{
+		display: flex;
+
+		.nav-tab{
+		    width: 5em;
+		    border-left: 1px solid #122140;
+		    border-right: 1px solid #122140;
+		    border-top: 1px solid #122140;
+		    border-top-left-radius: .5em;
+		    border-top-right-radius: .5em;
+		    background-color: #25334e;
+		    position: relative;
+		    top: 1em;
+		    height: 3em;
+		    display: flex;
+		    box-shadow: 0 0 0.3em 0 black;
+		    justify-content: center;
+		    padding-top: .7em;
+		    cursor: pointer;
+    		margin-right: 1em;
+
+    		.nav-icon{
+    			font-size: 1.7em;
+    		}
+		}
 	}
 }
