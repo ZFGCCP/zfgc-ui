@@ -1,14 +1,16 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import { faHome, faUsers, faAddressBook, faSearch } from "@fortawesome/free-solid-svg-icons";
 import NavTab from '../nav-tab/nav-tab.component.js';
+import Image from 'react-bootstrap/Image';
+import ZfgcLogo from  './../../assets/images/title-lg.png';
+import UserDetails from './user-details.component.js';
 
 class ZfgcHeader extends React.Component {
 	render () {
 		return (
 			<div className="zfgc-header">
 				<div className="title-heading">
-					Zelda Fan Game Central
+					<Image src={ZfgcLogo}></Image>
 				</div>
 				<div className="nav-heading">
 					<NavTab tooltip="Home" faIcon={faHome}></NavTab>
@@ -17,8 +19,7 @@ class ZfgcHeader extends React.Component {
 					<NavTab tooltip="Search" faIcon={faSearch}></NavTab>
 				</div>
 				<div className="user-heading">
-					Welcome, friend!<br/>
-					<Link to='/signin'>Sign in</Link> or Register
+					<UserDetails></UserDetails>
 				</div>
 			</div>
 		);

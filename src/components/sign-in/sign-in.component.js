@@ -20,8 +20,7 @@ function SignIn()  {
 		signInForm.password = event.target[1].value;
 		let auth = UserEndpoints.getClausiusLogin(signInForm);
 		auth.then(data => {
-			AuthStore.getInstance().setJwtToken(data.data);
-
+			AuthStore.getInstance().setJwtToken(data.data.access_token, data.data.expires_in);
 			let user = UserEndpoints.getLoggedInUser();
 		});
 		
