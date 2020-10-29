@@ -7,30 +7,56 @@
 		border: .1em solid black;
 	}
 
-	.form-check{
-		&::before{
-		    content: "";
-		    display: inline-flex;
-		    width: 1em;
-		    height: 1em;
-		    background-color: white;
-		    margin-right: .5em;
-		    position: relative;
-		    top: .15em;
-		    border-radius: .2em;
-		    border: 1px solid black;
-		}
-		
-		input{
-			display: none;
-		}
+	input[type="checkbox"], input[type="radio"]{
+		appearance: none;
+		background-color: #ffffff;
+	    padding: .445em;
+	    display: inline-flex;
+	    position: relative;
+	    margin-right: .4em;
+
+	    &:checked:after{
+		    font-size: 1em;
+		    font-weight: 600;
+		    position: absolute;
+	    }
+	}
+
+	input[type="checkbox"]{
+		border-radius: .2em;
+	    &:checked:after{
+	    	content: '\2714';
+		    top: -.3em;
+    		left: -.05em;
+	    }
+	}
+
+	input[type="radio"]{
+		border-radius: .5em;
+	    &:checked:after{
+    	    content: '\25CF';
+		    top: -.35em;
+    		left: .14em;
+	    }
 	}
 
 	.btn {
+		&:disabled{
+			background-color: transparent !important;
+    		border: .1em solid black;
+    		cursor: not-allowed;
+		}
+
 		margin-right: 1em;
 
 		&.btn-primary {
     		box-shadow: 0.2em 0.2em 0.4em 0 black;
+    		border: .13em solid black;
+    		font-weight: 600;
+		}
+
+		&.btn-danger{
+			box-shadow: 0.2em 0.2em 0.4em 0 black;
     		border: .13em solid black;
     		font-weight: 600;
 		}
