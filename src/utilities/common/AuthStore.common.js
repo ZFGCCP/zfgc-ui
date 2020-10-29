@@ -4,6 +4,8 @@ export default class AuthStore {
 	static myInstance = null;
 
 	jwtToken = null;
+	loggedInUser = null;
+	refresh = null;
 
 	static getInstance() {
 		if(AuthStore.myInstance == null){
@@ -14,5 +16,19 @@ export default class AuthStore {
 	}
 
 	getJwtToken (){ return this.jwtToken};
-	setJwtToken (jwt) { this.jwtToken = jwt; console.log("stored JWT")};
+	setJwtToken (jwt, refresh) { 
+		this.jwtToken = jwt; 
+		this.freshToken = refresh;
+
+		localStorage.setItem('zfgc-jwt', jwt); 
+		localStorage.setItem('zfgc-refresh', refresh);
+
+		console.log("stored JWT");
+	};
+
+	getLoggedInUser () { return this.loggedInUser; };
+	setLoggedInUser (user) {
+		this.loggedInUser = user;
+		console.log("stored logged in user");
+	};
 }
