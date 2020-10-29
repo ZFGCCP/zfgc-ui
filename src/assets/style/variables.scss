@@ -17,6 +17,16 @@ $border-stroke:		.2em;
 			&.btn-secondary{
 				background-color: $btnSecondary;
 			}
+
+			&.btn-danger {
+				background-color: $btnDanger;
+			}
+		}
+
+		input[type="radio"], input[type="checkbox"]{
+			&:checked:after{
+				color: $btnPrimary;
+			}
 		}
 	}
 
