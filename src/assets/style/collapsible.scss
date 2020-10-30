@@ -1,0 +1,16 @@
+.accordion {
+    background-color: $msecondary;
+    border: $border-stroke solid;
+    border-radius: $border-radius;
+    margin-top: 2em;
+    box-shadow: 0.3em 1em 1em black;
+
+    .card {
+        background-color: $msecondary;
+
+        .card-body {
+            padding: 0px;
+            background-color: $msecondary;
+        }
+    }
+}
