@@ -37,4 +37,16 @@ $border-stroke:		.2em;
 			color: #cdff07;
 		}
 	}
+
+	.accordion {
+		.card{
+			.card-header{
+				background-color: $msecondary2;
+				
+            	.btn-link{
+                	color: $onPrimary;
+            	}
+        	}
+    	}
+	}
 }
