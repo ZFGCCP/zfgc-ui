@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import UserEndpoints from './../../utilities/axios/users.endpoints.js';
 import AuthStore from './../../utilities/common/AuthStore.common.js';
+import Collapsible from './../../components/collapsible/collapsible.component.js';
 
 function SignIn()  {
 
@@ -28,27 +29,31 @@ function SignIn()  {
   };
 
 	return (
-		<div className="sign-in-form justify-content-center d-flex">
-			<Form className="zfgc-form col-6" onSubmit={handleSubmit}>
-				<Form.Group>
-					<Form.Label>Username</Form.Label>
-					<Form.Control type="input" name="username"></Form.Control>
-				</Form.Group>
+		<div className="justify-content-center d-flex">
+			<Collapsible title="test">
+				<div className="sign-in-form">
+					<Form className="zfgc-form">
+	                    <Form.Group>
+	                        <Form.Label>Username</Form.Label>
+	                        <Form.Control type="input" name="username"></Form.Control>
+	                    </Form.Group>
 
-				<Form.Group>
-					<Form.Label>Password</Form.Label>
-					<Form.Control type="password" name="password"></Form.Control>
-				</Form.Group>
+	                    <Form.Group>
+	                        <Form.Label>Password</Form.Label>
+	                        <Form.Control type="password" name="password"></Form.Control>
+	                    </Form.Group>
 
-				<Form.Group>
-					<Form.Check type="checkbox" label="Stay signed in"></Form.Check>
-				</Form.Group>
+	                    <Form.Group>
+	                        <Form.Check type="checkbox" label="Stay signed in"></Form.Check>
+	                    </Form.Group>
 
-				<Form.Group>
-					<Button variant="primary" type="submit">Sign in</Button>
-					<Button variant="secondary">Go Back</Button>
-				</Form.Group>
-			</Form>
+	                    <Form.Group>
+	                        <Button variant="primary" type="submit">Sign in</Button>
+	                        <Button variant="secondary">Go Back</Button>
+	                    </Form.Group>
+	                </Form>
+                </div>
+			</Collapsible>
 		</div>
 	);
 
