@@ -15,6 +15,12 @@ export default class AuthStore {
 		return this.myInstance;
 	}
 
+	
+	getRefresh(){return this.refresh;}
+	setUserDetailsRefresh(refresh){
+		this.refresh = refresh;
+	}
+
 	getJwtToken (){ return this.jwtToken};
 	setJwtToken (jwt, refresh) { 
 		this.jwtToken = jwt; 

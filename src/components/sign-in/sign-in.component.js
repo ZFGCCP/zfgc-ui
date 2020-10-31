@@ -23,6 +23,7 @@ function SignIn()  {
 		auth.then(data => {
 			AuthStore.getInstance().setJwtToken(data.data.access_token, data.data.expires_in);
 			let user = UserEndpoints.getLoggedInUser();
+			AuthStore.getInstance().getRefresh()();
 		});
 		
 
@@ -30,9 +31,9 @@ function SignIn()  {
 
 	return (
 		<div className="justify-content-center d-flex">
-			<Collapsible title="test">
+			<Collapsible>
 				<div className="sign-in-form">
-					<Form className="zfgc-form">
+					<Form className="zfgc-form" onSubmit={handleSubmit}>
 	                    <Form.Group>
 	                        <Form.Label>Username</Form.Label>
 	                        <Form.Control type="input" name="username"></Form.Control>

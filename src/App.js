@@ -8,6 +8,7 @@ import {
   Route, Link
 } from "react-router-dom";
 import SignIn from './components/sign-in/sign-in.component.js';
+import Registration from './components/registration/registration.component.js';
 
 function App() {
   document.body.classList.add('theme-midnight');
@@ -21,6 +22,9 @@ function App() {
       <Switch>
         <Route path="/signin">
           <SignIn/>
+        </Route>
+        <Route path="/registration">
+          <Registration/>
         </Route>
       </Switch>
     </Router>

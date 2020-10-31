@@ -48,7 +48,7 @@ export default class ZfgcApi {
 		return this.ax.get(url);
 	}
 
-	post(url, body){
-		return this.ax.post(url, body);
+	post(url, body, headers){
+		return this.ax.post(url, body, headers);
 	}
 };

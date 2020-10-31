@@ -16,6 +16,10 @@ class UserEndpoints extends React.Component {
 		return ZfgcApi.getInstance().get('users/loggedInUser');
 	}
 
+	static async getNewUserTemplate(){
+		return ZfgcApi.getInstance().get('users/newuser/template');
+	}
+
 }
 
 export default UserEndpoints;
