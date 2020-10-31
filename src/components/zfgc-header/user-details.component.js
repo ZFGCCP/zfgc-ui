@@ -8,7 +8,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class UserDetails extends React.Component {
 
+	constructor(){
+		super();
+
+		this.refresh = this.refresh.bind(this);
+	}
+
 	componentDidMount(){
+		AuthStore.getInstance().setUserDetailsRefresh(this.refresh);
 		this.refresh();
 	}
 
@@ -34,7 +41,7 @@ class UserDetails extends React.Component {
 
 		let userRender = <div>
 							Welcome, friend!<br/>
-							<Link to='/signin'>Sign in</Link> or Register
+							<Link to='/signin'>Sign in</Link> or <Link to="/registration">Register</Link>
 						</div>;
 		if(AuthStore.getInstance().getLoggedInUser() !== null){
 			userRender = <div className="logged-in-wrapper">
