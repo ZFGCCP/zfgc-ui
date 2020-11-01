@@ -6,8 +6,9 @@ import UserEndpoints from './../../utilities/axios/users.endpoints.js';
 import Collapsible from './../collapsible/collapsible.component.js';
 import LookupEndpoints from './../../utilities/axios/lookups.endpoints.js';
 import jstz from 'jstz';
+import ZfgcForm from './../forms/ZfgcForm.component.js';
 
-class Registration extends React.Component {
+class Registration extends ZfgcForm {
 	componentDidMount(){
 
 		Promise.all([UserEndpoints.getNewUserTemplate(), LookupEndpoints.getLookupsList("TIMEZONE")]).then(([user, lkups]) => {
@@ -21,31 +22,8 @@ class Registration extends React.Component {
 				}
 			}
 
-			this.setState({newUser : user.data});
+			super.initForm(user.data);
 		});
-	}
-
-	renderTimeZones(){
-		let items = [];
-
-		if(this.lookups && this.lookups !== null){
-			for(let lkup of this.lookups.TIMEZONE){
-				items.push(<option value={lkup.id}>{lkup.value}</option>);
-			}
-		}
-
-		return items;
-	}
-
-	checkRequiredFields(){
-
-	}
-
-	changeField(control, field){
-		let user = this.state.newUser;
-		user[field] = control.target.value;
-		this.state.newUser = user;
-		this.setState(this.state);
 	}
 
 	render () {
@@ -57,12 +35,12 @@ class Registration extends React.Component {
 						<Form className="zfgc-form">
 							<Form.Group>
 								<Form.Label>Username</Form.Label>
-								<Form.Control type="input" name="username" onChange={(c) => this.changeField(c, 'username')}></Form.Control>
+								<Form.Control type="input" name="username" onChange={(c) => super.changeField(c, 'loginName')}></Form.Control>
 							</Form.Group>
 
 							<Form.Group>
 								<Form.Label>Display Name</Form.Label>
-								<Form.Control type="input" name="displayName" onChange={(c) => this.changeField(c, 'displayName')}></Form.Control>
+								<Form.Control type="input" name="displayName" onChange={(c) => super.changeField(c, 'displayName')}></Form.Control>
 							</Form.Group>
 
 							<Form.Group>
@@ -77,8 +55,8 @@ class Registration extends React.Component {
 
 							<Form.Group>
 								<Form.Label>Timezone</Form.Label>
-								<Form.Control as="select" onChange={(c) => this.changeField(c, 'timeOffset') } value={this.state && this.state.newUser ? this.state.newUser.timeOffset : '5'} custom>
-									{this.renderTimeZones()}
+								<Form.Control as="select" onChange={(c) => super.changeField(c, 'timeOffset') } value={super.getState() && super.getState().vm ? super.getState().vm.timeOffset : '5'} custom>
+									{super.renderSelectOptions(this.lookups, "TIMEZONE")}
 								</Form.Control>
 							</Form.Group>
 
