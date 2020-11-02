@@ -32,6 +32,17 @@ export default class AuthStore {
 		console.log("stored JWT");
 	};
 
+	clearJwt(){
+		this.jwtToken = null; 
+		this.freshToken = null;
+		this.loggedInUser = null;
+
+		localStorage.removeItem('zfgc-jwt'); 
+		localStorage.removeItem('zfgc-refresh');
+
+		console.log("cleared JWT");
+	};
+
 	getLoggedInUser () { return this.loggedInUser; };
 	setLoggedInUser (user) {
 		this.loggedInUser = user;

@@ -37,6 +37,11 @@ class UserDetails extends React.Component {
 		}
 	}
 
+	handleLogout = (event) => {
+		AuthStore.getInstance().clearJwt();
+		this.setState({});
+	};
+
 	render(){
 
 		let userRender = <div>
@@ -49,7 +54,7 @@ class UserDetails extends React.Component {
 						 	<span>
 							 	{AuthStore.getInstance().getLoggedInUser().displayName}
 							 	<span>
-							 		<FontAwesomeIcon icon={faDoorOpen}/>
+							 		<FontAwesomeIcon icon={faDoorOpen} onClick={this.handleLogout} className="logout-button"/>
 							 		<FontAwesomeIcon icon={faEnvelope}/>
 							 	</span>
 						 	</span>
