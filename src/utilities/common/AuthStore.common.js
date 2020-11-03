@@ -21,13 +21,16 @@ export default class AuthStore {
 		this.refresh = refresh;
 	}
 
+	getRefreshToken () { return this.refreshToken };
 	getJwtToken (){ return this.jwtToken};
-	setJwtToken (jwt, refresh) { 
+	setJwtToken (jwt, refresh, localStore) { 
 		this.jwtToken = jwt; 
 		this.freshToken = refresh;
 
-		localStorage.setItem('zfgc-jwt', jwt); 
-		localStorage.setItem('zfgc-refresh', refresh);
+		if(localStore === true){
+			localStorage.setItem('zfgc-jwt', jwt); 
+			localStorage.setItem('zfgc-refresh', refresh);
+		}
 
 		console.log("stored JWT");
 	};

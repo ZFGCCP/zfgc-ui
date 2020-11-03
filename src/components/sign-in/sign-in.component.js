@@ -12,7 +12,8 @@ class SignIn extends ZfgcForm {
 	componentDidMount(){
 		let signInForm = {
 			"username": null,
-			"password": null
+			"password": null,
+			"signedIn": false
 		};
 
 		super.initForm(signInForm);
@@ -25,7 +26,7 @@ class SignIn extends ZfgcForm {
 
 		let auth = UserEndpoints.getClausiusLogin(super.getState().vm);
 		auth.then(data => {
-			AuthStore.getInstance().setJwtToken(data.data.access_token, data.data.expires_in);
+			AuthStore.getInstance().setJwtToken(data.data.access_token, data.data.expires_in, super.getState().vm.signedIn);
 			let user = UserEndpoints.getLoggedInUser();
 			AuthStore.getInstance().getRefresh()();
 		});
@@ -49,7 +50,7 @@ class SignIn extends ZfgcForm {
 	                    </Form.Group>
 
 	                    <Form.Group>
-	                        <Form.Check type="checkbox" label="Stay signed in"></Form.Check>
+	                        <Form.Check type="checkbox" label="Stay signed in" onChange={ (c) => super.changeField(c, 'signedIn') }></Form.Check>
 	                    </Form.Group>
 
 	                    <Form.Group>
