@@ -20,9 +20,16 @@ class UserDetails extends React.Component {
 	}
 
 	refresh() {
-		//check for access token
-		let token = localStorage.getItem('zfgc-jwt');
-		let refresh = localStorage.getItem('zfgc-refresh');
+		//check for access token in auth store first
+		//if we dont find it there, go to local storage
+		let token = AuthStore.getInstance().getJwtToken();
+		let refresh = AuthStore.getInstance().getRefreshToken();
+
+		if(token === null && refresh === null){
+			token = localStorage.getItem('zfgc-jwt');
+			refresh = localStorage.getItem('zfgc-refresh');
+		}
+
 		if(token !== undefined && token !== null){
 			AuthStore.getInstance().setJwtToken(token, refresh);
 			let auth = UserEndpoints.getLoggedInUser();
