@@ -3,6 +3,13 @@
 		font-weight: 600;
 	}
 
+	&.was-validated {
+		.form-control, .custom-select{
+			border: .15em solid;
+		}
+	} 
+
+
 	input {
 		border: .1em solid black;
 	}

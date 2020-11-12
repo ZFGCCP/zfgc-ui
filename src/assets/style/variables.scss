@@ -9,6 +9,20 @@ $border-stroke:		.2em;
 
 	
 	.zfgc-form{
+		.invalid-feedback{
+			color: $btnDanger;
+		}
+
+		&.was-validated{
+			.form-control:valid, .custom-select:valid, .form-check-input:valid{
+				border-color: $btnPrimary;
+			}
+
+			.form-control:invalid, .custom-select:invalid, .form-check-input:invalid{
+				border-color: $btnDanger;
+			}
+		}
+
 		.btn{
 			&.btn-primary{
 				background-color: $btnPrimary;
