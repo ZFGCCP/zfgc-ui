@@ -39,6 +39,9 @@ export default class ZfgcApi {
 				}
 
 			}
+			else if(responseCode === 422){
+
+			}
 		});
 	}
 

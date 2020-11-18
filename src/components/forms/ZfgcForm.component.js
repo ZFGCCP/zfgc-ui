@@ -11,16 +11,20 @@ class ZfgcForm extends React.Component {
 	}
 
 	changeField(control, field){
+		this.changeFieldInternal(control.target.value, field);
+	}
+
+	changeFieldInternal(value, field){
 		let vm = this.state.vm;
 		let children = field.split(".")
 		let fieldToWrite = null;
 		let temp = vm;
 
-		for(let i = 1; i < children.length1; i++){
+		for(let i = 0; i < children.length - 1; i++){
 			temp = temp[children[i]];
 		}
 
-		temp[children[children.length - 1]] = control.target.value;
+		temp[children[children.length - 1]] = value;
 		this.setState(this.state);
 	}
 
