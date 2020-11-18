@@ -7,6 +7,7 @@ import Collapsible from './../collapsible/collapsible.component.js';
 import LookupEndpoints from './../../utilities/axios/lookups.endpoints.js';
 import jstz from 'jstz';
 import ZfgcForm from './../forms/ZfgcForm.component.js';
+import DatePicker from "react-datepicker";
 
 class Registration extends ZfgcForm {
 
@@ -29,10 +30,15 @@ class Registration extends ZfgcForm {
 
 	handleSubmit = (event) => {
 		const form = event.currentTarget;
-    	if (form.checkValidity() === false) {
-      	    event.preventDefault();
+		event.preventDefault();
      	    event.stopPropagation();
+    	if (form.checkValidity() === false) {
      	    form.className += " was-validated";
+     	}
+     	else{
+     		UserEndpoints.registerNewUser(super.getState().vm).then((data) => {
+     			console.log("user response");
+     		});
      	}
     };
 
@@ -61,9 +67,17 @@ class Registration extends ZfgcForm {
 
 							<Form.Group>
 								<Form.Label>Password</Form.Label>
-								<Form.Control type="password" name="password" required></Form.Control>
+								<Form.Control type="password" name="password" onChange={(c) => super.changeField(c, 'userSecurityInfo.newPassword')} required></Form.Control>
 								<Form.Control.Feedback type="invalid">
               						Please enter a password.
+            					</Form.Control.Feedback>
+							</Form.Group>
+
+							<Form.Group>
+								<Form.Label>Confirm Password</Form.Label>
+								<Form.Control type="password" name="confirmPassword" onChange={(c) => super.changeField(c, 'userSecurityInfo.confirmNewPassword')} required></Form.Control>
+								<Form.Control.Feedback type="invalid">
+              						Please confirm your password.
             					</Form.Control.Feedback>
 							</Form.Group>
 
@@ -73,6 +87,11 @@ class Registration extends ZfgcForm {
 								<Form.Control.Feedback type="invalid">
               						Please enter an email address.
             					</Form.Control.Feedback>
+							</Form.Group>
+
+							<Form.Group>
+								<Form.Label>Date of Birth</Form.Label>
+								<DatePicker className="form-control"></DatePicker>
 							</Form.Group>
 
 							<Form.Group>
@@ -90,7 +109,7 @@ class Registration extends ZfgcForm {
 							</Form.Group>
 
 							<Form.Group>
-								<ReCAPTCHA sitekey="6Lde4o4UAAAAAI0Nkg5Gymqa6l3o9Is7g9-0OYOn"/>
+								<ReCAPTCHA sitekey="6Lde4o4UAAAAAI0Nkg5Gymqa6l3o9Is7g9-0OYOn" onChange={(c) => super.changeFieldInternal(c, 'gResponseToken')}/>
 							</Form.Group>
 
 

@@ -20,6 +20,10 @@ class UserEndpoints extends React.Component {
 		return ZfgcApi.getInstance().get('users/newuser/template');
 	}
 
+	static async registerNewUser(body){
+		return ZfgcApi.getInstance().post('users/newuser', body);
+	}
+
 }
 
 export default UserEndpoints;
