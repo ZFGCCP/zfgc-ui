@@ -6,6 +6,8 @@ export default class AuthStore {
 	jwtToken = null;
 	loggedInUser = null;
 	refresh = null;
+	headerRefresh = null;
+	footerRefresh = null;
 
 	static getInstance() {
 		if(AuthStore.myInstance == null){
@@ -19,6 +21,16 @@ export default class AuthStore {
 	getRefresh(){return this.refresh;}
 	setUserDetailsRefresh(refresh){
 		this.refresh = refresh;
+	}
+
+	getHeaderRefresh(){return this.headerRefresh;}
+	setHeaderRefresh(refresh){
+		this.headerRefresh = refresh
+	}
+
+	getFooterRefresh(){return this.footerRefresh;}
+	setFooterRefresh(refresh){
+		this.footerRefresh = refresh
 	}
 
 	getRefreshToken () { return this.refreshToken };

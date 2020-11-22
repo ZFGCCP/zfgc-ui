@@ -11,7 +11,7 @@ class MemberList extends ZfgcForm {
 	constructor(){
 		super();
 		this.lookups = {};
-		this.lookups.sortBy = [{id : "DISPLAY_NAME", value: "Username"}, {id: "DATE_REGISTERED", value: "Member Since"}];
+		this.lookups.sortBy = [{id : "DISPLAY_NAME", value: "Username"}, {id: "DATE_REGISTERED", value: "Member Since"}, {id: "GROUP_NAME", value: "Member Group"}];
 		this.lookups.sortOrder = [{id : "ASC", value: "Asc"}, {id : "DESC", value: "Desc"}];
 		
 	}
@@ -118,12 +118,12 @@ class MemberList extends ZfgcForm {
 								</Form.Control>
 							</Form.Group>
 
-							<Form.Group className="paginator d-flex">
-								<Form.Label>Page </Form.Label>
+							<Form.Group className="paginator d-flex align-items-center col-12 pl-1 mt-2">
+								<Form.Label className="col-2 pl-0 pr-0 pt-2 ">Page </Form.Label>
 								<FontAwesomeIcon icon={faCaretLeft} className={(this.state && this.state.vm.pageNo === 1 ? "disabled" : '') + " left"} onClick={this.handleArrowClickLeft}/>
 								<Form.Control type="input" name="paginator" className="col-1" value={this.state ? this.state.vm.pageNo : ''} onChange={ (c) => super.changeField(c, 'pageNo') }/>
 								<FontAwesomeIcon icon={faCaretRight} className={(this.state && this.state.vm.pageNo === this.state.vm.totalPages ? "disabled" : '' ) + " right"} onClick={this.handleArrowClickRight}/>
-								<Form.Label> of {this.state ? this.state.vm.totalPages : '1'}</Form.Label>
+								<Form.Label className="ml-3 mb-0"> of {this.state ? this.state.vm.totalPages : '1'}</Form.Label>
 							</Form.Group>
 						</Form>
 					</div>

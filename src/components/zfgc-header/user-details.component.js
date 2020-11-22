@@ -40,6 +40,8 @@ class UserDetails extends React.Component {
 				}
 
 				this.setState({});
+				AuthStore.getInstance().getHeaderRefresh()();
+				AuthStore.getInstance().getFooterRefresh()();
 			});
 		}
 	}
@@ -47,6 +49,8 @@ class UserDetails extends React.Component {
 	handleLogout = (event) => {
 		AuthStore.getInstance().clearJwt();
 		this.setState({});
+		AuthStore.getInstance().getHeaderRefresh()();
+		AuthStore.getInstance().getFooterRefresh()();
 	};
 
 	render(){
