@@ -7,7 +7,10 @@ $border-stroke:		.2em;
 	background-color: $mprimary;
 	color: 			  $onPrimary;
 
-	
+	.zfgc-footer{
+		background-color: $mprimary;
+	}
+
 	.zfgc-form{
 		.invalid-feedback{
 			color: $btnDanger;
@@ -62,5 +65,11 @@ $border-stroke:		.2em;
             	}
         	}
     	}
+	}
+
+	.user-panel{
+		&:hover{
+			background-color: $hoverColor;
+		}
 	}
 }

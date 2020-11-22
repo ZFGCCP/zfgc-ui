@@ -1,0 +1,13 @@
+.user-panels-wrapper{
+	max-height: 25em;
+    overflow-y: auto;
+
+	.user-panel{
+		cursor: pointer;
+
+		&:hover{
+			border-bottom: .1em solid;
+			box-shadow: 0 .5em 1em black;
+		}
+	}
+}

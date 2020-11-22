@@ -24,6 +24,10 @@ class UserEndpoints extends React.Component {
 		return ZfgcApi.getInstance().post('users/newuser', body);
 	}
 
+	static async getMembersList(params){
+		return ZfgcApi.getInstance().get('users/member-list?pageNo=' + params.pageNo + "&usersPerPage=" + params.usersPerPage + "&sortBy=" + params.sortBy + "&sortOrder=" + params.sortOrder);
+	}
+
 }
 
 export default UserEndpoints;

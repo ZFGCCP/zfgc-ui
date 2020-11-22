@@ -25,7 +25,7 @@ class UserDetails extends React.Component {
 		let token = AuthStore.getInstance().getJwtToken();
 		let refresh = AuthStore.getInstance().getRefreshToken();
 
-		if(token === null && refresh === null){
+		if(token === null){
 			token = localStorage.getItem('zfgc-jwt');
 			refresh = localStorage.getItem('zfgc-refresh');
 		}
@@ -40,6 +40,8 @@ class UserDetails extends React.Component {
 				}
 
 				this.setState({});
+				AuthStore.getInstance().getHeaderRefresh()();
+				AuthStore.getInstance().getFooterRefresh()();
 			});
 		}
 	}
@@ -47,6 +49,8 @@ class UserDetails extends React.Component {
 	handleLogout = (event) => {
 		AuthStore.getInstance().clearJwt();
 		this.setState({});
+		AuthStore.getInstance().getHeaderRefresh()();
+		AuthStore.getInstance().getFooterRefresh()();
 	};
 
 	render(){

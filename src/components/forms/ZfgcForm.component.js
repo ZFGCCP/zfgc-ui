@@ -14,6 +14,10 @@ class ZfgcForm extends React.Component {
 		this.changeFieldInternal(control.target.value, field);
 	}
 
+	changeFieldBool(control, field){
+		this.changeFieldInternal(control.target.checked, field);
+	}
+
 	changeFieldInternal(value, field){
 		let vm = this.state.vm;
 		let children = field.split(".")
