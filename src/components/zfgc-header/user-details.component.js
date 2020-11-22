@@ -25,7 +25,7 @@ class UserDetails extends React.Component {
 		let token = AuthStore.getInstance().getJwtToken();
 		let refresh = AuthStore.getInstance().getRefreshToken();
 
-		if(token === null && refresh === null){
+		if(token === null){
 			token = localStorage.getItem('zfgc-jwt');
 			refresh = localStorage.getItem('zfgc-refresh');
 		}

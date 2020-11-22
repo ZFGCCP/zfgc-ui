@@ -50,7 +50,7 @@ class SignIn extends ZfgcForm {
 	                    </Form.Group>
 
 	                    <Form.Group>
-	                        <Form.Check type="checkbox" label="Stay signed in" onChange={ (c) => super.changeField(c, 'signedIn') }></Form.Check>
+	                        <Form.Check type="checkbox" label="Stay signed in" onChange={ (c) => super.changeFieldBool(c, 'signedIn') }></Form.Check>
 	                    </Form.Group>
 
 	                    <Form.Group>
