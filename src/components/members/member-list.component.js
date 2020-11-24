@@ -34,6 +34,14 @@ class MemberList extends ZfgcForm {
 
 	handleSubmit = (event) => {
 		event.preventDefault();
+
+		if(this.state.vm.pageNo < 1){
+			this.state.vm.pageNo = 1;
+		}
+		else if(this.state.vm.pageNo > this.state.vm.totalPages){
+			this.state.vm.pageNo = this.state.vm.totalPages;
+		}
+
 		this.callMemberList().then(data => {
 			super.initForm(data.data);
 		});
