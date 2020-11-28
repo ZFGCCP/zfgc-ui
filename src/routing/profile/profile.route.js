@@ -4,6 +4,8 @@ import UserEndpoints from './../../utilities/axios/users.endpoints.js';
 import ZfgcForm from './../../components/forms/ZfgcForm.component.js';
 import { Link, useLocation} from "react-router-dom"
 import Avatar from './../../components/profile/avatar.component.js';
+import { faEnvelopeSquare } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class ProfileRoute extends ZfgcForm {
 
@@ -25,17 +27,17 @@ class ProfileRoute extends ZfgcForm {
 				{super.getState() !== null ? 
 					<Collapsible>
 						<div className="d-flex profile-wrapper pt-3 pb-3">
-							<div className="col-12 col-lg-4">
+							<div className="col-12 col-lg-4 d-flex d-lg-block">
 								<div className="basic-details d-flex flex-column">
 									<h5>{super.getState().vm.displayName}</h5>
 									<h6>{super.getState().vm.primaryMemberGroup.groupName}</h6>
 									<Avatar avatar={super.getState().vm.personalInfo.avatar}/>
-									<div className="personal-text-wrapper">{super.getState().vm.personalInfo.personalText}</div>
+									<div className="personal-text-wrapper d-none d-lg-block">{super.getState().vm.personalInfo.personalText}</div>
 								</div>
 								<div className="utility-details d-flex flex-column mt-4">
-									<div>Show posts</div>
-									<div>Show stats</div>
-									<div>Show karma</div>
+									<div className="d-flex quick-comm-wrapper">
+										<FontAwesomeIcon icon={faEnvelopeSquare}/>
+									</div>
 								</div>
 							</div>
 							<div className="col-12 col-lg-8">
