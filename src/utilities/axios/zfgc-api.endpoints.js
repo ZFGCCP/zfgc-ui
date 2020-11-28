@@ -18,7 +18,7 @@ export default class ZfgcApi {
 
 	constructor(){
 		this.ax = axios.create({
-					baseURL: "http://localhost:8080/forum/"
+					baseURL: process.env.REACT_APP_API_URL
 					});
 
 		this.ax.interceptors.request.use(req => {

@@ -11,6 +11,7 @@ import {
 import SignIn from './components/sign-in/sign-in.component.js';
 import NewUserRoute from './routing/new-user.route.js';
 import ViewMembers from './routing/members/view-members.route.js';
+import ProfileRoute from './routing/profile/profile.route.js';
 
 function App() {
   document.body.classList.add('theme-midnight');
@@ -33,7 +34,12 @@ function App() {
         <Route path="/members">
           <ViewMembers/>
         </Route>
+
+
+        //user profile
+        <Route path="/profile" component={ProfileRoute}/>
       </Switch>
+
 
       <div className="zfgc-bottom">
         <ZfgcFooter></ZfgcFooter>

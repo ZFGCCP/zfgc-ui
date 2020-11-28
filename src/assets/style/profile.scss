@@ -1,0 +1,21 @@
+.profile-wrapper{
+	.basic-details{
+		.avatar-wrapper{
+			img{
+				border-radius: .5em;
+    			border: .1em solid;
+    			width: 8em;
+    			height: 8em;
+			}
+		}
+
+		.personal-text-wrapper{
+			width: 128px;
+			font-size: .8em;
+		}
+	}
+
+	.utility-details{
+
+	}
+}
