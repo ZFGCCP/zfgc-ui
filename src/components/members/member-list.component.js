@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import { faEnvelopeSquare, faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import UserEndpoints from './../../utilities/axios/users.endpoints.js';
+import { Link } from "react-router-dom"
 
 class MemberList extends ZfgcForm {
 
@@ -95,7 +96,10 @@ class MemberList extends ZfgcForm {
 					<div className="user-panel p-3">
 						<div className="panel-inner">
 							<div>
-								<h4 className="ml-4 mb-0">{member.displayName} <span><FontAwesomeIcon icon={faEnvelopeSquare}/></span></h4>
+								<h4 className="ml-4 mb-0">
+									<Link to={"/profile?userId=" + member.usersId}>{member.displayName}</Link> 
+									<span><FontAwesomeIcon icon={faEnvelopeSquare}/></span>
+								</h4>
 								<h6 className="ml-4">{member.groupName}</h6>
 							</div>
 							<div className="ml-4"><label className="mb-0">Member Since:</label> {member.dateRegisteredAsString}</div>
