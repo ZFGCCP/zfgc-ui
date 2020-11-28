@@ -63,7 +63,7 @@ class UserDetails extends React.Component {
 			userRender = <div className="logged-in-wrapper">
 						 	<Image src={AuthStore.getInstance().getLoggedInUser().personalInfo.avatar.avatarUrl} rounded></Image>
 						 	<span>
-							 	{AuthStore.getInstance().getLoggedInUser().displayName}
+							 	<Link to={"/profile?userId=" + AuthStore.getInstance().getLoggedInUser().usersId}>{AuthStore.getInstance().getLoggedInUser().displayName}</Link>
 							 	<span>
 							 		<FontAwesomeIcon icon={faDoorOpen} onClick={this.handleLogout} className="logout-button"/>
 							 		<FontAwesomeIcon icon={faEnvelope}/>

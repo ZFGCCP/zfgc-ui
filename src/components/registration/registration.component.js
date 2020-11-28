@@ -91,7 +91,7 @@ class Registration extends ZfgcForm {
 
 							<Form.Group>
 								<Form.Label>Date of Birth</Form.Label>
-								<DatePicker className="form-control"></DatePicker>
+								<DatePicker className="form-control" onChange={(c) => super.changeField(c, 'personalInfo.birthDateAsString')}></DatePicker>
 							</Form.Group>
 
 							<Form.Group>
