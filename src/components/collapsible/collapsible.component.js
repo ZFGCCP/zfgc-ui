@@ -14,6 +14,13 @@ class Collapsible extends React.Component {
     constructor(){
         super();
         this.state = {opened : true};
+        this.sizeClass = "col-11 col-md-8 col-lg-6";
+    }
+
+    componentDidMount(){
+        if(this.props.sizeClass && this.props.sizeClass !== null && this.props.sizeClass !== ""){
+            this.sizeClass = this.props.sizeClass;
+        }
     }
 
     handleExpand() {
@@ -25,7 +32,7 @@ class Collapsible extends React.Component {
         let headerClass = this.props.title == null || this.props.title.trim().length == 0 ? 'd-none' : '';
         let squareIcon = this.state.opened ? faMinusSquare : faPlusSquare;
         return (
-            <Accordion defaultActiveKey="0" className="zfgc-collapsible col-11 col-md-8 col-lg-6">
+            <Accordion defaultActiveKey="0" className={"zfgc-collapsible " + this.sizeClass}>
                 <Card>
                     <Card.Header className={headerClass}>
                         <Accordion.Toggle as={Button} variant="link" eventKey="0" onClick={() => this.handleExpand()}>
