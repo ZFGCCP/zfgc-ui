@@ -32,6 +32,10 @@ class UserEndpoints extends React.Component {
 		return ZfgcApi.getInstance().get('users/profile/' + params.userId);
 	}
 
+	static getUserNavigation(params){
+		return ZfgcApi.getInstance().get('users/profile/' + params.userId + '/navigation');
+	}
+
 }
 
 export default UserEndpoints;

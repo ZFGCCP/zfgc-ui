@@ -48,10 +48,10 @@ $border-stroke:		.2em;
 	}
 
 	a{
-		color: #77ff3f;
+		color: $green1;
 
 		&:visited{
-			color: #cdff07;
+			color: $green2;
 		}
 	}
 
@@ -70,6 +70,19 @@ $border-stroke:		.2em;
 	.user-panel{
 		&:hover{
 			background-color: $hoverColor;
+		}
+	}
+
+	.profile-wrapper{
+		.nav-item{
+		    &.selected{
+				border-color: $green2 !important;
+				color: $green2;
+		    }
+
+		     &:hover{
+				border-color: $red1;
+		    }
 		}
 	}
 }

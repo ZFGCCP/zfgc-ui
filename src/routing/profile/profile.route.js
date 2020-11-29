@@ -18,15 +18,48 @@ class ProfileRoute extends ZfgcForm {
 		let userId = query.get("userId");
 		UserEndpoints.getUserProfile({userId : userId}).then(data => {
 			super.initForm(data.data);
+
+			UserEndpoints.getUserNavigation({userId : userId}).then(data => {
+				let tempState = super.getState();
+				tempState.nav = data.data;
+				super.setState(tempState);
+			});
 		});
+	}
+
+	handleNavClick(tab){
+		for(const nav of this.getState().nav){
+			nav.isSelected = false;
+		}
+
+		tab.isSelected = !tab.isSelected;
+
+		super.setState(this.getState());
+	}
+
+	renderNavigation(){
+		let tabArray = [];
+		if(this.getState().nav){
+			let nav = this.getState().nav;
+			
+			for(const tab of nav){
+				tabArray.push(
+					<div className={"nav-item" + (tab.isSelected ? " selected" : "")} onClick={(e) => this.handleNavClick(tab)}>
+						{tab.title}
+					</div>
+				);
+			}
+		}
+
+		return tabArray;
 	}
 
 	render () {
 		return (
 			<div className="justify-content-center d-flex">
 				{super.getState() !== null ? 
-					<Collapsible>
-						<div className="d-flex profile-wrapper pt-3 pb-3">
+					<Collapsible sizeClass="col-11 col-md-9 col-lg-8">
+						<div className="d-block d-lg-flex profile-wrapper pt-3 pb-3">
 							<div className="col-12 col-lg-4 d-flex d-lg-block">
 								<div className="basic-details d-flex flex-column">
 									<h5>{super.getState().vm.displayName}</h5>
@@ -41,7 +74,9 @@ class ProfileRoute extends ZfgcForm {
 								</div>
 							</div>
 							<div className="col-12 col-lg-8">
-
+								<div className="nav-wrapper d-flex justify-content-between">
+									{this.renderNavigation()}
+								</div>
 							</div>
 						</div>
 					</Collapsible> : ''
