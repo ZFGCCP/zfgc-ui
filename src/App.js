@@ -37,7 +37,7 @@ function App() {
 
 
         //user profile
-        <Route path="/profile" component={ProfileRoute}/>
+        <Route path="/profile/profileinfo" component={ProfileRoute}/>
       </Switch>
 
 

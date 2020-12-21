@@ -1,4 +1,8 @@
 .profile-wrapper{
+	label{
+		font-weight: bold;
+	}
+
 	.basic-details{
 		.avatar-wrapper{
 			img{
@@ -35,5 +39,12 @@
 		    }
 		}
 
+	}
+
+	.profile-summary{
+		.signature-wrapper{
+			white-space: nowrap;
+			overflow-x: auto;
+		}
 	}
 }
