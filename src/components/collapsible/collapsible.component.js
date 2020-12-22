@@ -29,7 +29,7 @@ class Collapsible extends React.Component {
 
     render() {
 
-        let headerClass = this.props.title == null || this.props.title.trim().length == 0 ? 'd-none' : '';
+        let headerClass = this.props.title == null || this.props.title.trim().length == 0 || this.props.noCollapse ? 'd-none' : '';
         let squareIcon = this.state.opened ? faMinusSquare : faPlusSquare;
         return (
             <Accordion defaultActiveKey="0" className={"zfgc-collapsible " + this.sizeClass}>
