@@ -91,7 +91,10 @@ class Registration extends ZfgcForm {
 
 							<Form.Group>
 								<Form.Label>Date of Birth</Form.Label>
-								<DatePicker className="form-control" onChange={(c) => super.changeField(c, 'personalInfo.birthDateAsString')}></DatePicker>
+								<Form.Control type="input" name="dob" placeholder="MM/DD/YYYY" onChange={(c) => super.changeField(c, 'personalInfo.birthDateAsString')}></Form.Control>
+								<Form.Control.Feedback type="invalid">
+									Please enter a date of birth.
+								</Form.Control.Feedback>
 							</Form.Group>
 
 							<Form.Group>
@@ -105,7 +108,7 @@ class Registration extends ZfgcForm {
 							</Form.Group>
 
 							<Form.Group>
-								<Form.Check type="checkbox" label="I agree to the terms of service and am at least 13 years of age." required/>
+								<Form.Check type="checkbox" label="I agree to the terms of service and am at least 13 years of age." onChange={(c) => super.changeFieldBool(c, 'agreeToTermsFlag')}required/>
 							</Form.Group>
 
 							<Form.Group>
