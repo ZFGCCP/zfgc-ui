@@ -1,6 +1,7 @@
 import React from 'react';
 import TosForm from './../components/registration/tos.component.js';
 import Registration from './../components/registration/registration.component.js';
+import PostRegistration from './../components/registration/post-registration.component.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,6 +20,9 @@ function NewUserRoute() {
 					</Route>
 					<Route path={path + "/new-user"}>
 						<Registration/>
+					</Route>
+					<Route path={path + "/success"}>
+						<PostRegistration/>
 					</Route>
 				</Router>
 			</Switch>

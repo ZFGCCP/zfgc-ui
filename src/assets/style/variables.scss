@@ -85,4 +85,10 @@ $border-stroke:		.2em;
 		    }
 		}
 	}
+
+	label{
+		&.green{
+			color: $green1;
+		}
+	}
 }
