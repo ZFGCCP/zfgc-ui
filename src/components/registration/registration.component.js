@@ -8,6 +8,7 @@ import LookupEndpoints from './../../utilities/axios/lookups.endpoints.js';
 import jstz from 'jstz';
 import ZfgcForm from './../forms/ZfgcForm.component.js';
 import DatePicker from "react-datepicker";
+import { Redirect } from "react-router-dom";
 
 class Registration extends ZfgcForm {
 
@@ -37,7 +38,9 @@ class Registration extends ZfgcForm {
      	}
      	else{
      		UserEndpoints.registerNewUser(super.getState().vm).then((data) => {
-     			console.log("user response");
+     			let state = super.getState();
+     			state.redirect = true;
+     			super.setState(state);
      		});
      	}
     };
@@ -46,6 +49,11 @@ class Registration extends ZfgcForm {
 
 		return (
 			<div className="justify-content-center d-flex">
+				{super.getState() && super.getState().redirect ? 
+				 <Redirect to="/registration/success"/> : 
+				 ""
+				}
+
 				<Collapsible>
 					<div className="sign-in-form">
 						<Form noValidate className="zfgc-form" onSubmit={this.handleSubmit}>
