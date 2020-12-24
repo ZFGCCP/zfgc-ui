@@ -97,7 +97,7 @@ class MemberList extends ZfgcForm {
 						<div className="panel-inner">
 							<div>
 								<h4 className="ml-4 mb-0">
-									<Link to={"/profile?userId=" + member.usersId}>{member.displayName}</Link> 
+									<Link to={"/profile/profileinfo?userId=" + member.usersId}>{member.displayName}</Link> 
 									<span><FontAwesomeIcon icon={faEnvelopeSquare}/></span>
 								</h4>
 								<h6 className="ml-4">{member.groupName}</h6>
