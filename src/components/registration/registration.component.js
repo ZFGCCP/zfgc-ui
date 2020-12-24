@@ -120,7 +120,7 @@ class Registration extends ZfgcForm {
 							</Form.Group>
 
 							<Form.Group>
-								<ReCAPTCHA sitekey="6Lde4o4UAAAAAI0Nkg5Gymqa6l3o9Is7g9-0OYOn" onChange={(c) => super.changeFieldInternal(c, 'gResponseToken')}/>
+								<ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHA_PUB_KEY} onChange={(c) => super.changeFieldInternal(c, 'gResponseToken')}/>
 							</Form.Group>
 
 
