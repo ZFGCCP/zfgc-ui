@@ -9,6 +9,7 @@ import jstz from 'jstz';
 import ZfgcForm from './../forms/ZfgcForm.component.js';
 import DatePicker from "react-datepicker";
 import { Redirect } from "react-router-dom";
+import ApiErrorAlert from "./../alerts/api-error.alert.js";
 
 class Registration extends ZfgcForm {
 
@@ -41,97 +42,115 @@ class Registration extends ZfgcForm {
      			let state = super.getState();
      			state.redirect = true;
      			super.setState(state);
+     		})
+     		.catch((error) => {
+     			if(error.response.status === 422){
+     				let state = super.getState();
+     				state.errors = error.response.data;
+     				super.setState(state);
+     			}
      		});
      	}
     };
 
+    closeModal(){
+    	let state = super.getState();
+		state.errors.hasErrors = false;
+		super.setState(state);
+    }
+
 	render () {
 
 		return (
-			<div className="justify-content-center d-flex">
-				{super.getState() && super.getState().redirect ? 
-				 <Redirect to="/registration/success"/> : 
-				 ""
-				}
+				<div className="justify-content-center d-flex">
+					{super.getState() && super.getState().errors && super.getState().errors.hasErrors ? 
+						<ApiErrorAlert errors={super.getState().errors} onClose={() => this.closeModal()}/> :
+						""
+					}
 
-				<Collapsible>
-					<div className="sign-in-form">
-						<Form noValidate className="zfgc-form" onSubmit={this.handleSubmit}>
-							<Form.Group>
-								<Form.Label>Username</Form.Label>
-								<Form.Control type="input" name="username" onChange={(c) => super.changeField(c, 'loginName')} required></Form.Control>
-								<Form.Control.Feedback type="invalid">
-              						Please choose a username.
-            					</Form.Control.Feedback>
-							</Form.Group>
+					{super.getState() && super.getState().redirect ? 
+						 <Redirect to="/registration/success"/> : 
+						 ""
+					}
 
-							<Form.Group>
-								<Form.Label>Display Name</Form.Label>
-								<Form.Control type="input" name="displayName" onChange={(c) => super.changeField(c, 'displayName')} required></Form.Control>
-								<Form.Control.Feedback type="invalid">
-              						Please choose a display name.
-            					</Form.Control.Feedback>
-							</Form.Group>
+					<Collapsible>
+						<div className="sign-in-form">
+							<Form noValidate className="zfgc-form" onSubmit={this.handleSubmit}>
+								<Form.Group>
+									<Form.Label>Username</Form.Label>
+									<Form.Control type="input" name="username" onChange={(c) => super.changeField(c, 'loginName')} required></Form.Control>
+									<Form.Control.Feedback type="invalid">
+	              						Please choose a username.
+	            					</Form.Control.Feedback>
+								</Form.Group>
 
-							<Form.Group>
-								<Form.Label>Password</Form.Label>
-								<Form.Control type="password" name="password" onChange={(c) => super.changeField(c, 'userSecurityInfo.newPassword')} required></Form.Control>
-								<Form.Control.Feedback type="invalid">
-              						Please enter a password.
-            					</Form.Control.Feedback>
-							</Form.Group>
+								<Form.Group>
+									<Form.Label>Display Name</Form.Label>
+									<Form.Control type="input" name="displayName" onChange={(c) => super.changeField(c, 'displayName')} required></Form.Control>
+									<Form.Control.Feedback type="invalid">
+	              						Please choose a display name.
+	            					</Form.Control.Feedback>
+								</Form.Group>
 
-							<Form.Group>
-								<Form.Label>Confirm Password</Form.Label>
-								<Form.Control type="password" name="confirmPassword" onChange={(c) => super.changeField(c, 'userSecurityInfo.confirmNewPassword')} required></Form.Control>
-								<Form.Control.Feedback type="invalid">
-              						Please confirm your password.
-            					</Form.Control.Feedback>
-							</Form.Group>
+								<Form.Group>
+									<Form.Label>Password</Form.Label>
+									<Form.Control type="password" name="password" onChange={(c) => super.changeField(c, 'userSecurityInfo.newPassword')} required></Form.Control>
+									<Form.Control.Feedback type="invalid">
+	              						Please enter a password.
+	            					</Form.Control.Feedback>
+								</Form.Group>
 
-							<Form.Group>
-								<Form.Label>Email Address</Form.Label>
-								<Form.Control type="input" name="email" onChange={(c) => super.changeField(c, 'userContactInfo.email.emailAddress')} required></Form.Control>
-								<Form.Control.Feedback type="invalid">
-              						Please enter an email address.
-            					</Form.Control.Feedback>
-							</Form.Group>
+								<Form.Group>
+									<Form.Label>Confirm Password</Form.Label>
+									<Form.Control type="password" name="confirmPassword" onChange={(c) => super.changeField(c, 'userSecurityInfo.confirmNewPassword')} required></Form.Control>
+									<Form.Control.Feedback type="invalid">
+	              						Please confirm your password.
+	            					</Form.Control.Feedback>
+								</Form.Group>
 
-							<Form.Group>
-								<Form.Label>Date of Birth</Form.Label>
-								<Form.Control type="input" name="dob" placeholder="MM/DD/YYYY" onChange={(c) => super.changeField(c, 'personalInfo.birthDateAsString')}></Form.Control>
-								<Form.Control.Feedback type="invalid">
-									Please enter a date of birth.
-								</Form.Control.Feedback>
-							</Form.Group>
+								<Form.Group>
+									<Form.Label>Email Address</Form.Label>
+									<Form.Control type="input" name="email" onChange={(c) => super.changeField(c, 'userContactInfo.email.emailAddress')} required></Form.Control>
+									<Form.Control.Feedback type="invalid">
+	              						Please enter an email address.
+	            					</Form.Control.Feedback>
+								</Form.Group>
 
-							<Form.Group>
-								<Form.Label>Timezone</Form.Label>
-								<Form.Control required as="select" onChange={(c) => super.changeField(c, 'timeOffset') } value={super.getState() && super.getState().vm ? super.getState().vm.timeOffset : '5'} custom>
-									{super.renderSelectOptions(this.lookups, "TIMEZONE")}
-								</Form.Control>
-								<Form.Control.Feedback type="invalid">
-              						Please select a timezone.
-            					</Form.Control.Feedback>
-							</Form.Group>
+								<Form.Group>
+									<Form.Label>Date of Birth</Form.Label>
+									<Form.Control type="input" name="dob" placeholder="MM/DD/YYYY" onChange={(c) => super.changeField(c, 'personalInfo.birthDateAsString')}></Form.Control>
+									<Form.Control.Feedback type="invalid">
+										Please enter a date of birth.
+									</Form.Control.Feedback>
+								</Form.Group>
 
-							<Form.Group>
-								<Form.Check type="checkbox" label="I agree to the terms of service and am at least 13 years of age." onChange={(c) => super.changeFieldBool(c, 'agreeToTermsFlag')}required/>
-							</Form.Group>
+								<Form.Group>
+									<Form.Label>Timezone</Form.Label>
+									<Form.Control required as="select" onChange={(c) => super.changeField(c, 'timeOffset') } value={super.getState() && super.getState().vm ? super.getState().vm.timeOffset : '5'} custom>
+										{super.renderSelectOptions(this.lookups, "TIMEZONE")}
+									</Form.Control>
+									<Form.Control.Feedback type="invalid">
+	              						Please select a timezone.
+	            					</Form.Control.Feedback>
+								</Form.Group>
 
-							<Form.Group>
-								<ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHA_PUB_KEY} onChange={(c) => super.changeFieldInternal(c, 'gResponseToken')}/>
-							</Form.Group>
+								<Form.Group>
+									<Form.Check type="checkbox" label="I agree to the terms of service and am at least 13 years of age." onChange={(c) => super.changeFieldBool(c, 'agreeToTermsFlag')}required/>
+								</Form.Group>
+
+								<Form.Group>
+									<ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHA_PUB_KEY} onChange={(c) => super.changeFieldInternal(c, 'gResponseToken')}/>
+								</Form.Group>
 
 
-							<Form.Group>
-								<Button variant="primary" type="submit">Register</Button>
-								<Button variant="secondary">Go Back</Button>
-							</Form.Group>
-						</Form>
-					</div>
-				</Collapsible>
-			</div>
+								<Form.Group>
+									<Button variant="primary" type="submit">Register</Button>
+									<Button variant="secondary">Go Back</Button>
+								</Form.Group>
+							</Form>
+						</div>
+					</Collapsible>
+				</div>
 		)
 	}
 }
