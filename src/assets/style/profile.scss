@@ -1,0 +1,50 @@
+.profile-wrapper{
+	label{
+		font-weight: bold;
+	}
+
+	.basic-details{
+		.avatar-wrapper{
+			img{
+				border-radius: .5em;
+    			border: .1em solid;
+    			width: 8em;
+    			height: 8em;
+			}
+		}
+
+		.personal-text-wrapper{
+			width: 128px;
+			font-size: .8em;
+		}
+	}
+
+	.utility-details{
+		.quick-comm-wrapper{
+			font-size: 1.5em;
+		}
+	}
+
+	.nav-wrapper{
+		.nav-item{
+			border-left: .1em solid;
+    		border-right: .1em solid;
+		    padding: 0 .3em;
+		    cursor: pointer;
+		    
+		    &.selected, &:hover {
+		    	box-shadow: 0 0 1em 0.5em black;
+		    	clip-path: inset(.1em -1em .1em -1em);
+		    	
+		    }
+		}
+
+	}
+
+	.profile-summary{
+		.signature-wrapper{
+			white-space: nowrap;
+			overflow-x: auto;
+		}
+	}
+}

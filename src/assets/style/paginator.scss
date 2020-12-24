@@ -1,0 +1,21 @@
+.paginator{
+	.left{
+		font-size: 2.5em;
+		padding-right: .1em;
+		cursor: pointer;
+
+		&.disabled{
+			cursor: not-allowed !important;
+		}
+	}
+
+	.right{
+		font-size: 2.5em;
+		padding-left: .1em;
+		cursor: pointer;
+
+		&.disabled{
+			cursor: not-allowed !important;
+		}
+	}
+}

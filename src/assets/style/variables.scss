@@ -6,4 +6,89 @@ $border-stroke:		.2em;
 .theme-midnight {
 	background-color: $mprimary;
 	color: 			  $onPrimary;
+
+	.zfgc-footer{
+		background-color: $mprimary;
+	}
+
+	.zfgc-form{
+		.invalid-feedback{
+			color: $btnDanger;
+		}
+
+		&.was-validated{
+			.form-control:valid, .custom-select:valid, .form-check-input:valid{
+				border-color: $btnPrimary;
+			}
+
+			.form-control:invalid, .custom-select:invalid, .form-check-input:invalid{
+				border-color: $btnDanger;
+			}
+		}
+
+		.btn{
+			&.btn-primary{
+				background-color: $btnPrimary;
+			}
+
+			&.btn-secondary{
+				background-color: $btnSecondary;
+			}
+
+			&.btn-danger {
+				background-color: $btnDanger;
+			}
+		}
+
+		input[type="radio"], input[type="checkbox"]{
+			&:checked:after{
+				color: $btnPrimary;
+			}
+		}
+	}
+
+	a{
+		color: $green1;
+
+		&:visited{
+			color: $green2;
+		}
+	}
+
+	.accordion {
+		.card{
+			.card-header{
+				background-color: $msecondary2;
+				
+            	.btn-link{
+                	color: $onPrimary;
+            	}
+        	}
+    	}
+	}
+
+	.user-panel{
+		&:hover{
+			background-color: $hoverColor;
+		}
+	}
+
+	.profile-wrapper{
+		.nav-item{
+		    &.selected{
+				border-color: $green2 !important;
+				color: $green2;
+		    }
+
+		     &:hover{
+				border-color: $red1;
+		    }
+		}
+	}
+
+	label{
+		&.green{
+			color: $green1;
+		}
+	}
 }

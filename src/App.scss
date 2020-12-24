@@ -1,7 +1,16 @@
 @import 'assets/style/variables.scss';
-@import "~bootstrap/scss/bootstrap";
+
+@import 'assets/style/collapsible.scss';
+@import 'assets/style/footer.scss';
+@import 'assets/style/forms.scss';
 @import 'assets/style/header.scss';
+@import 'assets/style/paginator.scss';
+@import 'assets/style/profile.scss';
+@import 'assets/style/registration.scss';
 @import 'assets/style/sign-in.scss';
+@import 'assets/style/users.scss';
+
+@import "../node_modules/react-datepicker/dist/react-datepicker.css";
 
 html {
   height: 100%;
@@ -11,3 +20,5 @@ body {
   font-size: 1em;
   font-family: Verdana, Helvetica, sans-serif;
 }
+
+@import "~bootstrap/scss/bootstrap";

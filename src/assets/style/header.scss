@@ -1,8 +1,55 @@
 .zfgc-header{
-	border-bottom: .2em solid black;
-	padding: 1em;
+    border-bottom: .2em solid black;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0.1em 0.3em black;
 
 	.user-heading{
 		font-weight: bold;
+
+		.logged-in-wrapper{
+			display: flex;
+
+			img {
+				width: 4.5em;
+    			border: .1em solid;
+    			margin-right: 1em;
+			}
+
+			.logout-button{
+				cursor: pointer;
+			}
+		}
+	}
+
+	.nav-heading{
+		.nav-tab{
+		    width: 5em;
+		    border-left: 1px solid #122140;
+		    border-right: 1px solid #122140;
+		    border-top: 1px solid #122140;
+		    border-top-left-radius: .5em;
+		    border-top-right-radius: .5em;
+		    background-color: #25334e;
+		    position: relative;
+		    top: 3em;
+		    height: 3em;
+		    display: flex;
+		    box-shadow: 0 0 0.3em 0 black;
+		    justify-content: center;
+		    padding-top: .7em;
+		    cursor: pointer;
+
+    		.nav-icon{
+    			font-size: 1.7em;
+    		}
+		}
+	}
+
+	.title-heading {
+		img {
+			height: 5em;
+		}
 	}
 }
