@@ -66,7 +66,7 @@ class UserDetails extends React.Component {
 							 	<Link to={"/profile/profileinfo?userId=" + AuthStore.getInstance().getLoggedInUser().usersId}>{AuthStore.getInstance().getLoggedInUser().displayName}</Link>
 							 	<span>
 							 		<FontAwesomeIcon icon={faDoorOpen} onClick={this.handleLogout} className="logout-button"/>
-							 		<FontAwesomeIcon icon={faEnvelope}/>
+							 		<Link to="/convobox"><FontAwesomeIcon icon={faEnvelope}/></Link>
 							 	</span>
 						 	</span>
 			             </div>;
