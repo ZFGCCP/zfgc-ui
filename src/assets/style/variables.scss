@@ -91,4 +91,16 @@ $border-stroke:		.2em;
 			color: $green1;
 		}
 	}
+
+	.convo-box-wrapper{
+		.convo-box-header{
+			.convo-box-tabs{
+				.convo-box-tab{
+					&.selected{
+						color: $green2;
+					}
+				}
+			}
+		}
+	}
 }

@@ -12,6 +12,7 @@ import SignIn from './components/sign-in/sign-in.component.js';
 import NewUserRoute from './routing/new-user.route.js';
 import ViewMembers from './routing/members/view-members.route.js';
 import ProfileRoute from './routing/profile/profile.route.js';
+import ConvoBoxRoute from './routing/conversation/convo-box.route.js';
 
 function App() {
   document.body.classList.add('theme-midnight');
@@ -38,6 +39,8 @@ function App() {
 
         //user profile
         <Route path="/profile/profileinfo" component={ProfileRoute}/>
+
+        <Route path="/convobox" component={ConvoBoxRoute}/>
       </Switch>
 
 
