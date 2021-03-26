@@ -4,6 +4,7 @@ import ConvoBoxFilters from './convo-box-filters.component.js';
 import { faInbox, faArchive, faHistory, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import SectionNavIcon from "./../../components/icons/section-nav-icon/SectionNavIcon.component.js";
 import LookupEndpoints from "./../../utilities/axios/lookups.endpoints.js";
+import ConvoEndpoints from "./../../utilities/axios/convo.endpoints.js";
 
 class ConvoBox extends React.Component {
 	constructor(){
@@ -11,6 +12,7 @@ class ConvoBox extends React.Component {
 		this.SwapSection = this.SwapSection.bind(this);
 
 		this.state = {};
+		this.loadConvoBox = this.loadConvoBox.bind(this);
 	}
 
 	componentWillMount(){
@@ -19,6 +21,7 @@ class ConvoBox extends React.Component {
 			openTabName: "Inbox",
 
 		};
+		this.setState({convos : {boxId : 0, pageNo : 1, conversations : []}});
 	}
 
 	componentDidMount(){
@@ -36,12 +39,23 @@ class ConvoBox extends React.Component {
 			
 
 			this.setState(this.state);
+			this.loadConvoBox(0, 1);
+		});
+	}
+
+	loadConvoBox(boxId, pageNo){
+		ConvoEndpoints.getConvoBox(boxId, pageNo).then(data => {
+			let state = this.state;
+			state.convos = data.data;
+			state.convos.boxId = boxId;
+			state.convos.pageNo = pageNo;
+			this.setState(state);
 		});
 	}
 
 	SwapSection(iconProps){
 		this.settings.openTabName = iconProps.label;
-		this.setState(this.state);
+		this.loadConvoBox(iconProps.iconId, 1);
 	}
 
 	getLabel(index){
@@ -67,13 +81,35 @@ class ConvoBox extends React.Component {
 
 		let result = [];
 		for(let lkup of this.lookups.LKUP_CONVO_BOX_TYPE){
-			result.push(<SectionNavIcon icon={this.getIcon(lkup.id)} label={this.getLabel(lkup.id)} onClick={this.SwapSection} selected={this.settings.openTabName}/>);
+			result.push(<SectionNavIcon icon={this.getIcon(lkup.id)} label={this.getLabel(lkup.id)} iconId={lkup.id} onClick={this.SwapSection} selected={this.settings.openTabName}/>);
+		}
+
+		return result;
+	}
+
+	renderConvos() {
+		let result = [];
+
+		if(this.state.convos){
+			for(let convo of this.state.convos.conversations){
+				result.push(
+					<div className="message d-flex justify-content-between p-2">
+						<div className="message-details">
+							<span className="detail"><input type="checkbox"/></span>
+							<span className="detail from">From: {convo.senderName}</span>
+							<span className="pl-3 pl-lg-0 detail subject">{convo.subject}</span>
+						</div>
+						<div className="detail">{convo.sentDtAsString}</div>
+					</div>
+				);
+			}
 		}
 
 		return result;
 	}
 
 	render() {
+		let convos = this.state.convos;
 		return (
 			<div className="justify-content-center d-flex convo-box-wrapper">
 				<Collapsible title="Conversation Box">
@@ -87,16 +123,10 @@ class ConvoBox extends React.Component {
 					</div>
 
 					<div className="convo-box-body">
-						<ConvoBoxFilters convoBox={this.convoBox}/>
+						<ConvoBoxFilters convos={convos} boxRefreshCallback={this.loadConvoBox}/>
 
-						<div className="convo-box-messages">
-							<div className="message">
-								<div>Title</div>
-								<div>timestamp</div>
-								<div>Last Message By: </div>
-								<div>Started by: </div>
-								<div>blah blah a...</div>
-							</div>
+						<div className="convo-box-messages zfgc-form">
+							{this.renderConvos()}
 						</div>
 					</div>
 				</Collapsible>

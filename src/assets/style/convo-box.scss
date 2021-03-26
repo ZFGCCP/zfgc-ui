@@ -13,4 +13,34 @@
 			}
 		}
 	}
+
+	.convo-box-messages{
+		.message{
+			cursor: pointer;
+			border-bottom: .1em solid;
+
+			.detail {
+				font-size: .85em;
+			}
+
+			.message-details{
+				@media(min-width: 769px){
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+
+				.from{
+					width: 15em;
+					display: inline-block
+				}
+
+				.subject{
+					@media(max-width: 768px){
+						display: block;
+					}
+				}
+			}
+		}
+	}
 }

@@ -17,7 +17,7 @@ class SectionNavIcon extends React.Component {
 	render () {
 		return (
 			<div className={(this.props.className ? this.props.className + " " : "") + 
-					         "convo-box-tab" + 
+					         "convo-box-tab col-3 " + 
 					         (this.props.selected === this.props.label ? " selected" : "")} onClick={this.click}><FontAwesomeIcon icon={this.props.icon}/></div>
 		)
 	}

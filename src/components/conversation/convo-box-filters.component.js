@@ -1,6 +1,9 @@
 import React from "react";
 import ZfgcForm from "./../forms/ZfgcForm.component.js";
 import Form from 'react-bootstrap/Form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelopeSquare, faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import ZfgcPaginator from "./../../components/forms/ZfgcPaginator.component.js";
 
 class ConvoBoxFilters extends ZfgcForm {
 	constructor() {
@@ -12,13 +15,28 @@ class ConvoBoxFilters extends ZfgcForm {
 							   {id: "GROUP_NAME", value: "Starting User"}];
 
 		this.lookups.sortOrder = [{id : "ASC", value: "Asc"}, {id : "DESC", value: "Desc"}];
+
+		this.changePage = this.changePage.bind(this);
 	}
 
 	componentDidMount(){
-		super.initForm(this.props.convoBox);
+		super.initForm({});
+	}
+
+	changeSortingOrder = (event) => {
+		super.changeField(event, 'sortOrder');
+
+		this.callApi().then(data => {
+			//super.initForm(data.data);
+		});
+	}
+
+	changePage(){
+		this.props.boxRefreshCallback(this.props.convos.boxId, this.props.convos.pageNo);
 	}
 
 	render () {
+		let state = super.getState();
 		return (
 			<div>
 				<Form noValidate className="zfgc-form">
@@ -31,6 +49,9 @@ class ConvoBoxFilters extends ZfgcForm {
 							{super.renderSelectOptions(this.lookups, "sortOrder")}
 						</Form.Control>
 					</Form.Group>
+					{super.getState() !== null ? 
+						<ZfgcPaginator pagedCollection={this.props.convos} clickCallback={this.changePage}/> : ''
+					}
 				</Form>
 			</div>
 		)
