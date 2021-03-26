@@ -102,5 +102,13 @@ $border-stroke:		.2em;
 				}
 			}
 		}
+
+		.convo-box-messages{
+			.message{
+				&:hover{
+					background-color: $hoverColor;
+				}
+			}
+		}
 	}
 }
